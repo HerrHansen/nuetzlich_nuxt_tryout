@@ -1,13 +1,10 @@
 import { Card } from "antd/lib";
 import Meta from "antd/lib/card/Meta";
 import UiTemplateWidget from "@/components/ui/UiTemplateWidget";
+import WidgetTipCalculator from "@/components/widget/WidgetTipCalculator";
 
 export default function Page() {
-  const Widget = () => (
-    <Card hoverable style={{ width: 240 }}>
-      <Meta title="Trinkgeldrechner" description="Kann los gehen?" />
-    </Card>
-  );
+  const Widget = () => <WidgetTipCalculator />;
 
   const Body = () => (
     <>

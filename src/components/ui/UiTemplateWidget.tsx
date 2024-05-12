@@ -9,13 +9,11 @@ export default function UiTemplateWidget({
   slotBody: () => React.ReactNode;
 }) {
   return (
-    <Row>
-      <Col>
-        <Flex gap="middle" vertical>
-          <div>{slotWidget()}</div>
-          <div>{slotBody()}</div>
-        </Flex>
-      </Col>
-    </Row>
+    <div className="pa-2">
+      <Flex gap="middle" vertical>
+        <div>{slotWidget()}</div>
+        <div>{slotBody()}</div>
+      </Flex>
+    </div>
   );
 }

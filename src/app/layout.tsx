@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider, Layout } from "antd";
-import { Header, Content, Footer } from "antd/lib/layout/layout";
+import { Content, Footer } from "antd/lib/layout/layout";
 import Sider from "antd/lib/layout/Sider";
 import de from "antd/locale/de_DE";
 import "./globals.css";
+import "./utility.css";
 import UiMenu from "@/components/ui/UiMenu";
 
 export const metadata: Metadata = {
