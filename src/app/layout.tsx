@@ -5,8 +5,7 @@ import { Header, Content, Footer } from "antd/lib/layout/layout";
 import Sider from "antd/lib/layout/Sider";
 import de from "antd/locale/de_DE";
 import "./globals.css";
-import UiMenu from "@/components/UiMenu/UiMenu";
-import { use, useState } from "react";
+import UiMenu from "@/components/ui/UiMenu";
 
 export const metadata: Metadata = {
   title: "Nuetzli.ch",
