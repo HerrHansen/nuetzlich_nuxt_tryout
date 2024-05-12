@@ -17,17 +17,50 @@ enum Rounded {
   up,
 }
 
+interface Result {
+  exact: {
+    total: number;
+    tip: number;
+    persentage: number;
+  };
+  roundedDown: {
+    total: number;
+    tip: number;
+    persentage: number;
+  };
+  roundedUp: {
+    total: number;
+    tip: number;
+    persentage: number;
+  };
+}
+
 export default function WidgetTipCalculator() {
   const [percentage, setPercentage] = useState(Percentage.five);
   const [input, setInput] = useState<string>();
   const [inputNumber, setInputNumber] = useState<number>(0);
   const [rounded, setRounded] = useState<Rounded>(Rounded.exact);
-  const [tip, setTip] = useState(0);
-  const [total, setTotal] = useState(0);
+  const [result, setResult] = useState<Result>({
+    exact: {
+      total: 0,
+      tip: 0,
+      persentage: 0,
+    },
+    roundedDown: {
+      total: 0,
+      tip: 0,
+      persentage: 0,
+    },
+    roundedUp: {
+      total: 0,
+      tip: 0,
+      persentage: 0,
+    },
+  });
 
   const items = [Percentage.five, Percentage.ten, Percentage.fifteen];
 
-  useEffect(calcTotal, [inputNumber, percentage, rounded]);
+  useEffect(calcTotal, [inputNumber, percentage]);
 
   function handleInput(event: ChangeEvent<HTMLInputElement>) {
     const targetValue = event.target.value;
@@ -50,23 +83,52 @@ export default function WidgetTipCalculator() {
 
   function calcTotal() {
     const tip = parseFloat(((inputNumber * percentage) / 100).toFixed(2));
+    const total = parseFloat((inputNumber + tip).toFixed(2));
+    // Only if over input
+    const totalDown =
+      Math.floor(total) > inputNumber ? Math.floor(total) : inputNumber;
+    const totalUp = Math.ceil(total);
 
-    let total = parseFloat((inputNumber + tip).toFixed(2));
-    let roundedValue = 0;
+    const newResult: Result = {
+      exact: {
+        total: total,
+        tip: tip,
+        persentage: percentage,
+      },
+      roundedDown: {
+        total: totalDown,
+        tip: utils.fixFloat(totalDown - inputNumber),
+        persentage: utils.calcPercentage(
+          inputNumber,
+          utils.fixFloat(totalDown - inputNumber)
+        ),
+      },
+      roundedUp: {
+        total: totalUp,
+        tip: utils.fixFloat(totalUp - inputNumber),
+        persentage: utils.calcPercentage(
+          inputNumber,
+          utils.fixFloat(totalUp - inputNumber)
+        ),
+      },
+    };
 
-    if (rounded === Rounded.down) {
-      console.log("rounded down");
-      roundedValue = total - Math.floor(total);
+    setResult(newResult);
+  }
 
-      total -= roundedValue;
-    } else if (rounded === Rounded.up) {
-      console.log("rounded up");
-      roundedValue = Math.ceil(total) - total;
-      total += roundedValue;
-    }
+  function ResultBox() {
+    let _result = result.exact;
 
-    setTotal(total);
-    setTip(tip);
+    if (rounded === Rounded.down) _result = result.roundedDown;
+    if (rounded === Rounded.up) _result = result.roundedUp;
+
+    return (
+      <div>
+        <h1>{inputNumber > 0 ? _result.total : 0} €</h1>
+        <h2>Tip: {inputNumber > 0 ? _result.tip : 0} €</h2>({_result.persentage}
+        %)
+      </div>
+    );
   }
 
   return (
@@ -97,12 +159,10 @@ export default function WidgetTipCalculator() {
           <Radio.Button value={Rounded.exact}>exakt</Radio.Button>
           <Radio.Button value={Rounded.up}>aufrunden</Radio.Button>
         </Radio.Group>
-        {
-          <div>
-            <h1>{inputNumber > 0 ? total : 0} €</h1>
-            (Tip: {inputNumber > 0 ? tip : 0} €)
-          </div>
-        }
+
+        <div>
+          <ResultBox />
+        </div>
       </Space>
     </Card>
   );
