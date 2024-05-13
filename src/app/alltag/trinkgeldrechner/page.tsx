@@ -1,23 +1,22 @@
-import { Card } from "antd/lib";
-import Meta from "antd/lib/card/Meta";
-import UiTemplateWidget from "@/components/ui/UiTemplateWidget";
-import WidgetTipCalculator from "@/components/widget/WidgetTipCalculator";
+import { Metadata } from "next";
+import TipCalculator from "@/components/widget/TipCalculator";
+import Title from "antd/lib/typography/Title";
+
+export const metadata: Metadata = {
+  title: "Nuetzli.ch - Trinkgeldrechner",
+  description: "Du bist sooo praktisch.",
+};
 
 export default function Page() {
-  const Widget = () => <WidgetTipCalculator />;
+  return (
+    <div>
+      <Title>Trinkgeldrechner</Title>
+      <div>
+        Berechne mit unserem Trinkgeldrechner schnell und einfach den Endbetrag
+        deiner Rechnung!
+      </div>
 
-  const Body = () => (
-    <>
-      <div>
-        <h1>Trinkgeldrechner</h1>
-      </div>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod deleniti
-        molestias unde eaque! Cum voluptate, facilis porro eaque adipisci beatae
-        culpa ipsum ullam iusto a magnam mollitia, facere nihil commodi.
-      </div>
-    </>
+      <TipCalculator />
+    </div>
   );
-
-  return <UiTemplateWidget slotWidget={Widget} slotBody={Body} />;
 }

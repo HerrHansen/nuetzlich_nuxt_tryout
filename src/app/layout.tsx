@@ -7,6 +7,7 @@ import de from "antd/locale/de_DE";
 import "./globals.css";
 import "./utility.css";
 import UiMenu from "@/components/ui/UiMenu";
+import { theme } from "./theme";
 
 export const metadata: Metadata = {
   title: "Nuetzli.ch",
@@ -17,11 +18,8 @@ const RootLayout = ({ children }: React.PropsWithChildren) => (
   <html lang="en">
     <body>
       <AntdRegistry>
-        <ConfigProvider locale={de}>
-          <Layout hasSider style={{minHeight: '100svh'}}>
-            <Sider>
-                <UiMenu />
-            </Sider>
+        <ConfigProvider locale={de} theme={theme}>
+          <Layout style={{ minHeight: "100svh" }}>
             <Layout>
               <Content>{children}</Content>
               <Footer>© 2024 nuetzli.ch 🫶 All rights reserved.</Footer>

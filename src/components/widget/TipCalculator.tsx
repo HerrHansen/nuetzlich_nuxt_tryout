@@ -1,9 +1,11 @@
 "use client";
 
-import { Button, Card, Flex, Input, Space, Radio } from "antd";
 import { ChangeEvent, useEffect, useState } from "react";
 import utils from "@/utils";
-import { RadioChangeEvent } from "antd/lib";
+import { Input, Space, Radio } from "antd";
+import { Col, RadioChangeEvent, Row } from "antd/lib";
+import Title from "antd/lib/typography/Title";
+import { Select } from "antd/lib";
 
 enum Percentage {
   five = 5,
@@ -35,7 +37,7 @@ interface Result {
   };
 }
 
-export default function WidgetTipCalculator() {
+export default function TipCalculator() {
   const [percentage, setPercentage] = useState(Percentage.five);
   const [input, setInput] = useState<string>();
   const [inputNumber, setInputNumber] = useState<number>(0);
@@ -124,46 +126,72 @@ export default function WidgetTipCalculator() {
 
     return (
       <div>
-        <h1>{inputNumber > 0 ? _result.total : 0} €</h1>
-        <h2>Tip: {inputNumber > 0 ? _result.tip : 0} €</h2>({_result.persentage}
-        %)
+        <Title>Endbetrag</Title>
+        <Row>
+          <Col span={12}>
+            <div>
+            Inkl.  € {inputNumber > 0 ? _result.tip : 0} Trinkgeld
+            </div>
+            <div>
+            ({_result.persentage} %)
+            </div>
+          </Col>
+          <Col span={12}>€ {inputNumber > 0 ? _result.total : 0}</Col>
+        </Row>
+
       </div>
     );
   }
 
   return (
-    <Card>
-      <Space size="middle" direction="vertical">
-        <Input type="string" prefix="€" value={input} onInput={handleInput} />
-        <Space size="middle">
-          {items.map((item) => (
-            <Button
-              key={item}
-              onClick={() => {
-                setPercentage(item);
-                calcTotal();
-              }}
-              type={percentage == item ? "primary" : "default"}
-            >
-              {item}%
-            </Button>
-          ))}
-        </Space>
-        <Radio.Group
-          defaultValue={Rounded.exact}
-          buttonStyle="solid"
-          size="small"
-          onChange={handleRoundedChange}
-        >
-          <Radio.Button value={Rounded.down}>abrunden</Radio.Button>
-          <Radio.Button value={Rounded.exact}>exakt</Radio.Button>
-          <Radio.Button value={Rounded.up}>aufrunden</Radio.Button>
-        </Radio.Group>
+    <div>
+      <div>
+        <Title>Land</Title>
+        <Select />
+      </div>
 
-        <div>
-          <ResultBox />
-        </div>
-      </Space>
-    </Card>
+      <div>
+        In Deutschland ist es üblich, für guten Service 10 Prozent des
+        Rechnungsbetrags als Trinkgeld zu geben, allerdings ist es freiwillig
+        und nicht gesetzlich vorgeschrieben.
+      </div>
+
+      <div>
+        <Space size="middle" direction="vertical">
+          <Title>Rechnungsbetrag</Title>
+          <Input type="string" prefix="€" value={input} onInput={handleInput} />
+
+          <Title>Trinkgeld</Title>
+          <Radio.Group defaultValue={Percentage.ten} buttonStyle="solid">
+            {items.map((item) => (
+              <Radio.Button
+                value={item}
+                key={item}
+                onClick={() => {
+                  setPercentage(item);
+                  calcTotal();
+                }}
+              >
+                {item} %
+              </Radio.Button>
+            ))}
+          </Radio.Group>
+
+          <Title>Rundung</Title>
+          <Radio.Group
+            defaultValue={Rounded.up}
+            buttonStyle="solid"
+            onChange={handleRoundedChange}
+          >
+            <Radio.Button value={Rounded.down}>abrunden</Radio.Button>
+            <Radio.Button value={Rounded.up}>aufrunden</Radio.Button>
+          </Radio.Group>
+
+          <div>
+            <ResultBox />
+          </div>
+        </Space>
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,12 @@
+import { Metadata } from "next";
 import { Card } from "antd/lib";
 import Meta from "antd/lib/card/Meta";
 import UiTemplateWidget from "@/components/ui/UiTemplateWidget";
+
+export const metadata: Metadata = {
+  title: "Nuetzli.ch - Dreisatzrechner",
+  description: "Du bist sooo praktisch.",
+};
 
 export default function Page() {
   const Widget = () => (
