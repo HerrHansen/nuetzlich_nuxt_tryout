@@ -1,0 +1,176 @@
+/*
+padding	Control the padding of the element.
+paddingLG	Control the large padding of the element.	number	24
+paddingMD	Control the medium padding of the element.	number	20
+paddingSM	Control the small padding of the element.	number	12
+paddingXL	Control the extra large padding of the element.	number	32
+paddingXS	Control the extra small padding of the element.	number	8
+paddingXXS
+
+*/
+
+/* Padding */
+
+.p {
+  padding: var(--ant-padding);
+}
+
+.p-lg {
+  padding: var(--ant-padding-lg);
+}
+
+.p-md {
+  padding: var(--ant-padding-md);
+}
+
+.p-sm {
+  padding: var(--ant-padding-sm);
+}
+
+.p-xl {
+  padding: var(--ant-padding-xl);
+}
+
+.p-xs {
+  padding: var(--ant-padding-xs);
+}
+
+.p-xxs {
+  padding: var(--ant-padding-xxs);
+}
+
+.px {
+  padding-left: var(--ant-padding);
+  padding-right: var(--ant-padding);
+}
+
+.px-lg {
+  padding-left: var(--ant-padding-lg);
+  padding-right: var(--ant-padding-lg);
+}
+.px-md {
+  padding-left: var(--ant-padding-md);
+  padding-right: var(--ant-padding-md);
+}
+.px-sm {
+  padding-left: var(--ant-padding-sm);
+  padding-right: var(--ant-padding-sm);
+}
+.px-xl {
+  padding-left: var(--ant-padding-xl);
+  padding-right: var(--ant-padding-xl);
+}
+.px-xs {
+  padding-left: var(--ant-padding-xs);
+  padding-right: var(--ant-padding-xs);
+}
+.px-xxs {
+  padding-left: var(--ant-padding-xxs);
+  padding-right: var(--ant-padding-xxs);
+}
+
+
+/* Margin */
+.m {
+  margin: var(--ant-margin);
+}
+.m-lg {
+  margin: var(--ant-margin-lg);
+}
+.m-md {
+  margin: var(--ant-margin-md);
+}
+.m-sm {
+  margin: var(--ant-margin-sm);
+}
+.m-xl {
+  margin: var(--ant-margin-xl);
+}
+.m-xs {
+  margin: var(--ant-margin-xs);
+}
+.m-xxs {
+  margin: var(--ant-margin-xxs);
+}
+.mx {
+  margin-left: var(--ant-margin);
+  margin-right: var(--ant-margin);
+}
+.mx-lg {
+  margin-left: var(--ant-margin-lg);
+  margin-right: var(--ant-margin-lg);
+}
+.mx-md {
+  margin-left: var(--ant-margin-md);
+  margin-right: var(--ant-margin-md);
+}
+.mx-sm {
+  margin-left: var(--ant-margin-sm);
+  margin-right: var(--ant-margin-sm);
+}
+.mx-xl {
+  margin-left: var(--ant-margin-xl);
+  margin-right: var(--ant-margin-xl);
+}
+.mx-xs {
+  margin-left: var(--ant-margin-xs);
+  margin-right: var(--ant-margin-xs);
+}
+.mx-xxs {
+  margin-left: var(--ant-margin-xxs);
+  margin-right: var(--ant-margin-xxs);
+}
+
+.mb {
+  margin-bottom: var(--ant-margin);
+}
+.mb-lg {
+  margin-bottom: var(--ant-margin-lg);
+}
+.mb-md {
+  margin-bottom: var(--ant-margin-md);
+}
+.mb-sm {
+  margin-bottom: var(--ant-margin-sm);
+}
+.mb-xl {
+  margin-bottom: var(--ant-margin-xl);
+}
+.mb-xs {
+  margin-bottom: var(--ant-margin-xs);
+}
+.mb-xxs {
+  margin-bottom: var(--ant-margin-xxs);
+}
+
+/* BG Colors */
+
+.bg-secondary {
+  background-color: var(--ant-color-fill-secondary);
+}
+
+
+/* Flex */
+
+.flex-justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-align-items-center {
+  display: flex;
+  align-items: center;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+/* Text */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: center;
+}

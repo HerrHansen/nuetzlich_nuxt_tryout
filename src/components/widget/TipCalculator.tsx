@@ -3,8 +3,8 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import utils from "@/utils";
 import { Input, Space, Radio } from "antd";
-import { Col, RadioChangeEvent, Row } from "antd/lib";
-import Title from "antd/lib/typography/Title";
+import { Col, RadioChangeEvent, Row, Typography } from "antd/lib";
+
 import { Select } from "antd/lib";
 
 enum Percentage {
@@ -126,28 +126,27 @@ export default function TipCalculator() {
 
     return (
       <div>
-        <Title>Endbetrag</Title>
+        <Typography.Title level={2}>Endbetrag</Typography.Title>
         <Row>
           <Col span={12}>
-            <div>
-            Inkl.  € {inputNumber > 0 ? _result.tip : 0} Trinkgeld
-            </div>
-            <div>
-            ({_result.persentage} %)
-            </div>
+            <div>Inkl. € {inputNumber > 0 ? _result.tip : 0} Trinkgeld</div>
+            <div>({_result.persentage} %)</div>
           </Col>
-          <Col span={12}>€ {inputNumber > 0 ? _result.total : 0}</Col>
+          <Col span={12}>
+            <Typography.Title level={1} className="text-right">
+              € {inputNumber > 0 ? _result.total : 0}
+            </Typography.Title>
+          </Col>
         </Row>
-
       </div>
     );
   }
 
   return (
     <div>
-      <div>
-        <Title>Land</Title>
-        <Select />
+      <div className="bg-secondary p-md">
+        <Typography.Title level={2}>Land</Typography.Title>
+        <Select style={{ width: "100%" }} />
       </div>
 
       <div>
@@ -158,10 +157,10 @@ export default function TipCalculator() {
 
       <div>
         <Space size="middle" direction="vertical">
-          <Title>Rechnungsbetrag</Title>
+          <Typography.Title level={2}>Rechnungsbetrag</Typography.Title>
           <Input type="string" prefix="€" value={input} onInput={handleInput} />
 
-          <Title>Trinkgeld</Title>
+          <Typography.Title>Trinkgeld</Typography.Title>
           <Radio.Group defaultValue={Percentage.ten} buttonStyle="solid">
             {items.map((item) => (
               <Radio.Button
@@ -177,7 +176,7 @@ export default function TipCalculator() {
             ))}
           </Radio.Group>
 
-          <Title>Rundung</Title>
+          <Typography.Title level={2}>Rundung</Typography.Title>
           <Radio.Group
             defaultValue={Rounded.up}
             buttonStyle="solid"

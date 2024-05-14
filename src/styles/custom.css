@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "display-semi-bold";
+  src: URL("/fonts/syne/Syne-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  src: URL("/fonts/source-sans-3/SourceSans3-Regular.ttf") format("truetype");
+}
+:root {
+  --font-nut-heading: "display-semi-bold", sans-serif;
+}
+
+[class^="nut-heading"] {
+  font-family: var(--font-nut-heading);
+}
+
+.nut-heading-1 {
+  font-size: var(--ant-font-size-heading-1);
+}
+.nut-heading-2 {
+  font-size: var(--ant-font-size-heading-2);
+}
+.nut-heading-3 {
+  font-size: var(--ant-font-size-heading-3);
+}
+.nut-heading-4 {
+  font-size: var(--ant-font-size-heading-4);
+}
+.nut-heading-5 {
+  font-size: var(--ant-font-size-heading-5);
+}

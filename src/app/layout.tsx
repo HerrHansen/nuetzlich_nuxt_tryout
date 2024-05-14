@@ -5,9 +5,11 @@ import { Content, Footer } from "antd/lib/layout/layout";
 import Sider from "antd/lib/layout/Sider";
 import de from "antd/locale/de_DE";
 import "./globals.css";
-import "./utility.css";
-import UiMenu from "@/components/ui/UiMenu";
+import "@/styles/utility.css";
+import "@/styles/custom.css";
 import { theme } from "./theme";
+import UiHeader from "@/components/ui/UiHeader";
+import UiFooter from "@/components/ui/UiFooter";
 
 export const metadata: Metadata = {
   title: "Nuetzli.ch",
@@ -20,10 +22,9 @@ const RootLayout = ({ children }: React.PropsWithChildren) => (
       <AntdRegistry>
         <ConfigProvider locale={de} theme={theme}>
           <Layout style={{ minHeight: "100svh" }}>
-            <Layout>
-              <Content>{children}</Content>
-              <Footer>© 2024 nuetzli.ch 🫶 All rights reserved.</Footer>
-            </Layout>
+            <UiHeader />
+            <Content className="p-md">{children}</Content>
+            <UiFooter />
           </Layout>
         </ConfigProvider>
       </AntdRegistry>
