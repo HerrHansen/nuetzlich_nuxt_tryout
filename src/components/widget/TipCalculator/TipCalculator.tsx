@@ -2,10 +2,13 @@
 
 import { ChangeEvent, useEffect, useState } from "react";
 import utils from "@/utils";
-import { Input, Space, Radio } from "antd";
-import { Col, RadioChangeEvent, Row, Typography } from "antd/lib";
-
+import { Input, Radio } from "antd";
 import { Select } from "antd/lib";
+import { Col, RadioChangeEvent, Row } from "antd/lib";
+
+import UiBox from "../../ui/UiBox";
+
+import { countries } from "./countries";
 
 enum Percentage {
   five = 5,
@@ -125,71 +128,95 @@ export default function TipCalculator() {
     if (rounded === Rounded.up) _result = result.roundedUp;
 
     return (
-      <div>
-        <Typography.Title level={2}>Endbetrag</Typography.Title>
+      <UiBox
+        type="primary"
+        className="mb-md"
+        style={{ color: "var(--ant-color-text-light-solid)" }}
+      >
+        <h1 className="nut-heading-3 mb-xs">Endbetrag</h1>
         <Row>
           <Col span={12}>
-            <div>Inkl. € {inputNumber > 0 ? _result.tip : 0} Trinkgeld</div>
-            <div>({_result.persentage} %)</div>
+            <div className="flex-align-items-center h-full">
+              <div>
+                <div>Inkl. € {inputNumber > 0 ? _result.tip : 0} Trinkgeld</div>
+                <div>({_result.persentage} %)</div>
+              </div>
+            </div>
           </Col>
           <Col span={12}>
-            <Typography.Title level={1} className="text-right">
+            <h2 className="nut-heading-1 text-right">
               € {inputNumber > 0 ? _result.total : 0}
-            </Typography.Title>
+            </h2>
           </Col>
         </Row>
-      </div>
+      </UiBox>
     );
   }
 
   return (
     <div>
-      <div className="bg-secondary p-md">
-        <Typography.Title level={2}>Land</Typography.Title>
-        <Select style={{ width: "100%" }} />
-      </div>
+      <UiBox className="mb-md">
+        <h2 className="nut-heading-4 mb-xs">Land</h2>
+        <Select style={{ width: "100%" }} size="large" options={countries} />
+      </UiBox>
 
-      <div>
+      <div className="mb-xl">
         In Deutschland ist es üblich, für guten Service 10 Prozent des
         Rechnungsbetrags als Trinkgeld zu geben, allerdings ist es freiwillig
         und nicht gesetzlich vorgeschrieben.
       </div>
 
       <div>
-        <Space size="middle" direction="vertical">
-          <Typography.Title level={2}>Rechnungsbetrag</Typography.Title>
-          <Input type="string" prefix="€" value={input} onInput={handleInput} />
+        <UiBox className="mb">
+          <h2 className="nut-heading-4 mb-xs">Rechnungsbetrag</h2>
 
-          <Typography.Title>Trinkgeld</Typography.Title>
-          <Radio.Group defaultValue={Percentage.ten} buttonStyle="solid">
-            {items.map((item) => (
-              <Radio.Button
-                value={item}
-                key={item}
-                onClick={() => {
-                  setPercentage(item);
-                  calcTotal();
-                }}
-              >
-                {item} %
-              </Radio.Button>
-            ))}
-          </Radio.Group>
+          <Input
+            type="string"
+            prefix="€"
+            value={input}
+            onInput={handleInput}
+            className="mb-md"
+            size="large"
+          />
 
-          <Typography.Title level={2}>Rundung</Typography.Title>
+          <h2 className="nut-heading-4 mb-xs">Trinkgeld</h2>
+
+          <div className="mb-md">
+            <Radio.Group
+              defaultValue={Percentage.ten}
+              buttonStyle="solid"
+              size="large"
+            >
+              {items.map((item) => (
+                <Radio.Button
+                  value={item}
+                  key={item}
+                  onClick={() => {
+                    setPercentage(item);
+                    calcTotal();
+                  }}
+                >
+                  {item} %
+                </Radio.Button>
+              ))}
+            </Radio.Group>
+          </div>
+
+          <h2 className="nut-heading-4 mb-xs">Rundung</h2>
+
           <Radio.Group
-            defaultValue={Rounded.up}
+            defaultValue={Rounded.exact}
             buttonStyle="solid"
             onChange={handleRoundedChange}
+            size="large"
           >
             <Radio.Button value={Rounded.down}>abrunden</Radio.Button>
+            <Radio.Button value={Rounded.exact}>keine</Radio.Button>
             <Radio.Button value={Rounded.up}>aufrunden</Radio.Button>
           </Radio.Group>
+        </UiBox>
 
-          <div>
-            <ResultBox />
-          </div>
-        </Space>
+        <ResultBox />
       </div>
     </div>
   );

@@ -69,7 +69,6 @@ paddingXXS
   padding-right: var(--ant-padding-xxs);
 }
 
-
 /* Margin */
 .m {
   margin: var(--ant-margin);
@@ -150,6 +149,14 @@ paddingXXS
 }
 
 
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
 /* Flex */
 
 .flex-justify-between {
@@ -172,5 +179,5 @@ paddingXXS
 }
 
 .text-right {
-  text-align: center;
+  text-align: right;
 }

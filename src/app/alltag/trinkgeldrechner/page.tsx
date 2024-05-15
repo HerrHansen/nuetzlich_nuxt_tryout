@@ -1,7 +1,5 @@
 import { Metadata } from "next";
-import TipCalculator from "@/components/widget/TipCalculator";
-import { Typography } from "antd/lib";
-import Title from "antd/lib/typography/Title";
+import TipCalculator from "@/components/widget/TipCalculator/TipCalculator";
 
 export const metadata: Metadata = {
   title: "Nuetzli.ch - Trinkgeldrechner",
@@ -11,8 +9,8 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <Title level={2}>Trinkgeldrechner</Title>
-      <div>
+      <h1 className="nut-heading-2 mb-xs">Trinkgeldrechner</h1>
+      <div className="mb-lg">
         Berechne mit unserem Trinkgeldrechner schnell und einfach den Endbetrag
         deiner Rechnung!
       </div>

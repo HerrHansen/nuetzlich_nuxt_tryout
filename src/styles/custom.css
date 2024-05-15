@@ -15,6 +15,15 @@
   font-family: var(--font-nut-heading);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
 .nut-heading-1 {
   font-size: var(--ant-font-size-heading-1);
 }

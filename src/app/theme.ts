@@ -7,7 +7,7 @@ const themeFigma = {
     colorTextTertiary: "rgba(0, 0, 0, 0.5)",
     colorBgLayout: "#f7f6eb",
     colorPrimary: "#9254de",
-    fontFamily: "'Source Sans 3'",
+    fontFamily: "Source Sans 3",
     fontSize: 16,
     fontSizeLG: 18,
     fontSizeSM: 14,
@@ -23,11 +23,16 @@ const themeFigma = {
     Nut: {
       boxBorderRadius: 16,
       boxPadding: 20,
-      boxBgDefault: "rgba(0, 0, 0, 0.25)",
+      boxBgDefault: "rgba(0, 0, 0, 0.06)",
       boxBgPrimary: "#9254de",
+      nutLayoutMaxWidth: 480,
+      nutLayoutPaddingX: 24,
     },
   },
 };
+
+themeFigma.token.fontFamily = `"${themeFigma.token.fontFamily}"`;
+themeFigma.token.nutFontFamilyDisplay = `"${themeFigma.token.nutFontFamilyDisplay}"`;
 
 export const theme = {
   cssVar: true,

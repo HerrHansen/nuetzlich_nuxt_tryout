@@ -23,7 +23,16 @@ const RootLayout = ({ children }: React.PropsWithChildren) => (
         <ConfigProvider locale={de} theme={theme}>
           <Layout style={{ minHeight: "100svh" }}>
             <UiHeader />
-            <Content className="p-md">{children}</Content>
+            <Content
+              style={{
+                paddingLeft: theme.components.Nut.nutLayoutPaddingX,
+                paddingRight: theme.components.Nut.nutLayoutPaddingX,
+                maxWidth: theme.components.Nut.nutLayoutMaxWidth,
+                margin: "0 auto",
+              }}
+            >
+              {children}
+            </Content>
             <UiFooter />
           </Layout>
         </ConfigProvider>
