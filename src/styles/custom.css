@@ -39,3 +39,7 @@ h6 {
 .nut-heading-5 {
   font-size: var(--ant-font-size-heading-5);
 }
+
+.body {
+  color: var(--ant-color-text);
+}

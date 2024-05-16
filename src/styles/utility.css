@@ -148,7 +148,6 @@ paddingXXS
   background-color: var(--ant-color-fill-secondary);
 }
 
-
 .w-full {
   width: 100%;
 }
@@ -174,10 +173,14 @@ paddingXXS
 }
 
 /* Text */
+.text-left {
+  text-align: left !important;
+}
+
 .text-center {
-  text-align: center;
+  text-align: center !important;
 }
 
 .text-right {
-  text-align: right;
+  text-align: right !important;
 }

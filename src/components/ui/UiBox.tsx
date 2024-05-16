@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { theme } from "@/app/theme";
+import { nutTheme } from "@/app/theme";
 
 export default function UiBox({
   children,
@@ -16,12 +16,12 @@ export default function UiBox({
     <div
       className={className + " p-md"}
       style={{
-        borderRadius: theme.components.Nut.boxBorderRadius,
-        padding: theme.components.Nut.boxPadding,
+        borderRadius: nutTheme.components.Nut.boxBorderRadius,
+        padding: nutTheme.components.Nut.boxPadding,
         background:
           type === "primary"
-            ? theme.components.Nut.boxBgPrimary
-            : theme.components.Nut.boxBgDefault,
+            ? nutTheme.components.Nut.boxBgPrimary
+            : nutTheme.components.Nut.boxBgDefault,
         ...style,
       }}
     >

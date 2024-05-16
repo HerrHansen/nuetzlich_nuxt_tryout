@@ -1,44 +1,48 @@
-import type { Metadata } from "next";
+"use client";
+
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider, Layout } from "antd";
-import { Content, Footer } from "antd/lib/layout/layout";
-import Sider from "antd/lib/layout/Sider";
 import de from "antd/locale/de_DE";
 import "./globals.css";
 import "@/styles/utility.css";
 import "@/styles/custom.css";
-import { theme } from "./theme";
+import { nutTheme, nutThemeDark } from "./theme";
 import UiHeader from "@/components/ui/UiHeader";
 import UiFooter from "@/components/ui/UiFooter";
+import StyledComponentsRegistry from "./AntdRegistry";
 
-export const metadata: Metadata = {
-  title: "Nuetzli.ch",
-  description: "Woohooo!",
-};
+const darkMode: boolean = false;
 
 const RootLayout = ({ children }: React.PropsWithChildren) => (
-  <html lang="en">
-    <body>
-      <AntdRegistry>
-        <ConfigProvider locale={de} theme={theme}>
-          <Layout style={{ minHeight: "100svh" }}>
-            <UiHeader />
-            <Content
-              style={{
-                paddingLeft: theme.components.Nut.nutLayoutPaddingX,
-                paddingRight: theme.components.Nut.nutLayoutPaddingX,
-                maxWidth: theme.components.Nut.nutLayoutMaxWidth,
-                margin: "0 auto",
-              }}
-            >
-              {children}
-            </Content>
-            <UiFooter />
-          </Layout>
-        </ConfigProvider>
-      </AntdRegistry>
-    </body>
-  </html>
+  <StyledComponentsRegistry>
+    <ConfigProvider
+      locale={de}
+      theme={{
+        ...(darkMode ? nutThemeDark : nutTheme),
+      }}
+    >
+      <html lang="en">
+        <body className="dark">
+          <AntdRegistry>
+            <Layout style={{ minHeight: "100svh" }}>
+              <UiHeader />
+              <Layout.Content
+                style={{
+                  paddingLeft: nutTheme.components.Nut.nutLayoutPaddingX,
+                  paddingRight: nutTheme.components.Nut.nutLayoutPaddingX,
+                  maxWidth: nutTheme.components.Nut.nutLayoutMaxWidth,
+                  margin: "0 auto",
+                }}
+              >
+                {children}
+              </Layout.Content>
+              <UiFooter />
+            </Layout>
+          </AntdRegistry>
+        </body>
+      </html>
+    </ConfigProvider>
+  </StyledComponentsRegistry>
 );
 
 export default RootLayout;

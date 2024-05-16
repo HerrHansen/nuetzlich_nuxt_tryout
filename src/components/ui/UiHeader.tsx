@@ -1,12 +1,16 @@
 "use client";
 
-import { Button } from "antd";
+import { Button, Popover } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import UiMenu from "./UiMenu";
 
 export default function UiHeader() {
   function handleMenuToggle() {
     console.log("handleMenuToggle");
   }
+
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="p-md flex-justify-between">
@@ -23,11 +27,19 @@ export default function UiHeader() {
         <h1 className="inline-block">nuetzli.ch</h1>
       </div>
       <div className="flex-align-items-center">
-        <Button
-          type="text"
-          icon={<MenuOutlined />}
-          onClick={() => handleMenuToggle()}
-        />
+        <Popover
+          content={UiMenu}
+          trigger="click"
+          open={menuOpen}
+          onOpenChange={() => setMenuOpen(!menuOpen)}
+          placement="bottomRight"
+        >
+          <Button
+            type="text"
+            icon={<MenuOutlined />}
+            onClick={() => handleMenuToggle()}
+          />
+        </Popover>
       </div>
     </div>
   );

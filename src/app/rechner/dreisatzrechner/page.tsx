@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { Card } from "antd/lib";
 import Meta from "antd/lib/card/Meta";
-import UiTemplateWidget from "@/components/ui/UiTemplateWidget";
 
 export const metadata: Metadata = {
   title: "Nuetzli.ch - Dreisatzrechner",
@@ -26,5 +25,5 @@ export default function Page() {
     </>
   );
 
-  return <UiTemplateWidget slotWidget={Widget} slotBody={Body} />;
+return <Body />;
 }
