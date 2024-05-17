@@ -1,45 +1,69 @@
 "use client";
 
-import { Button, Popover } from "antd";
+import { Button, Dropdown } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
-import { useState } from "react";
-import UiMenu from "./UiMenu";
+import { useUiStore } from "@/stores/uiStore";
+import Link from "next/link";
 
 export default function UiHeader() {
-  function handleMenuToggle() {
-    console.log("handleMenuToggle");
+  const { isDarkMode, toggleDarkMode } = useUiStore((state) => ({
+    isDarkMode: state.isDarkMode,
+    toggleDarkMode: state.toggleDarkMode,
+  }));
+
+  enum UrlKeys {
+    rechner = "rechner",
+    trinkgeldrechner = "trinkgeldrechner",
+    dreisatzrechner = "dreisatzrechner",
   }
 
-  const [menuOpen, setMenuOpen] = useState(false);
+  const items: any[] = [
+    {
+      key: "home",
+      label: (
+        <Link href={`/`}>
+          Übersicht
+        </Link>
+      ),
+    },
+    {
+      key: UrlKeys.trinkgeldrechner,
+      label: (
+        <Link href={`/${UrlKeys.rechner}/${UrlKeys.trinkgeldrechner}`}>
+          Trinkgeld Rechner
+        </Link>
+      ),
+    },
+    {
+      key: UrlKeys.dreisatzrechner,
+      label: (
+        <Link href={`/${UrlKeys.rechner}/${UrlKeys.dreisatzrechner}`}>
+          Dreisatz Rechner
+        </Link>
+      ),
+    },
+    {
+      type: "divider",
+    },
+    {
+      key: "toggle",
+      label: (
+        <div onClick={toggleDarkMode}>
+          {isDarkMode ? "Light Mode" : "Dark Mode"}
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div className="p-md flex-justify-between">
       <div>
-        <div
-          style={{
-            display: "inline-block",
-            width: "24px",
-            height: "24px",
-            borderRadius: "50%",
-            border: "4px solid #000",
-          }}
-        ></div>
         <h1 className="inline-block nut-heading-2">nuetzli.ch</h1>
       </div>
       <div className="flex-align-items-center">
-        <Popover
-          content={UiMenu}
-          trigger="click"
-          open={menuOpen}
-          onOpenChange={() => setMenuOpen(!menuOpen)}
-          placement="bottomRight"
-        >
-          <Button
-            type="text"
-            icon={<MenuOutlined />}
-            onClick={() => handleMenuToggle()}
-          />
-        </Popover>
+        <Dropdown menu={{ items }} placement="bottomRight">
+          <Button type="text" icon={<MenuOutlined />} />
+        </Dropdown>
       </div>
     </div>
   );

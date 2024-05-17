@@ -9,7 +9,8 @@ function fixFloat(value: number): number {
 }
 
 function calcPercentage(total: number, piece: number): number {
-  return parseFloat(((piece / total) * 100).toFixed(2));
+  const per = parseFloat(((piece / total) * 100).toFixed(2));
+  return isNaN(per) ? 0 : per;
 }
 
 const utils = {

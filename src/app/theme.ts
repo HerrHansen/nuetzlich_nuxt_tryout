@@ -1,11 +1,11 @@
-import { theme } from "antd";
-
-const themeFigma = {
+const themeFigma: any = {
   token: {
     colorText: "rgba(0, 0, 0, 0.92)",
+    colorLink: "rgba(0, 0, 50, 0.92)",
     colorTextSecondary: "rgba(0, 0, 0, 0.7)",
-    colorTextTertiary: "rgba(0, 0, 0, 0.5)",
+    // colorBgContainer: "#ffffff",
     colorBgLayout: "#f7f6eb",
+    // colorBgElevated: "#E8E7DD",
     colorPrimary: "#9254de",
     fontFamily: "Source Sans 3",
     fontSize: 16,
@@ -23,47 +23,34 @@ const themeFigma = {
       footerBg: "transparent",
       headerPadding: "0",
     },
-    Popover: {
-      colorText: "rgba(0, 0, 0, 0.7)",
-    },
     Nut: {
       boxBorderRadius: 16,
       boxPadding: 20,
-      boxBgDefault: "rgba(0, 0, 0, 0.06)",
+      boxBgDefault: "#E8E7DD",
       boxBgPrimary: "#9254de",
       nutLayoutMaxWidth: 480,
       nutLayoutPaddingX: 24,
     },
+    Button: {
+      colorText: "rgba(0, 0, 0, 0.92)",
+    }
   },
 };
 
 themeFigma.token.fontFamily = `"${themeFigma.token.fontFamily}"`;
 themeFigma.token.nutFontFamilyDisplay = `"${themeFigma.token.nutFontFamilyDisplay}"`;
 
-const themeFigmaDark = JSON.parse(JSON.stringify(themeFigma));
-
-themeFigmaDark.token.colorText = "rgba(255, 255, 255, 0.65)";
-themeFigmaDark.token.colorTextSecondary = "rgba(255,255, 255, 0.7)";
-themeFigmaDark.token.colorTextTertiary = "rgba(255, 255, 255, 0.5)";
-themeFigmaDark.token.colorBgLayout = "#000000";
-themeFigmaDark.token.colorBgContainer = "#141414";
-themeFigmaDark.token.colorBgElevated = "#141414";
-themeFigmaDark.token.colorPrimary = "#9254de";
-
-themeFigmaDark.components.Popover.colorText = "rgba(255,255,255, 0.7)";
-themeFigmaDark.components.Nut.boxBgDefault = "rgba(255,255,255, 0.1)";
-themeFigmaDark.components.Nut.boxBgPrimary = "#9254de";
-
 export const nutTheme = {
   cssVar: true,
-  hashed: false,
-  devUseWarning: false,
   ...themeFigma,
 };
 
-export const nutThemeDark = {
-  cssVar: true,
-  hashed: false,
-  devUseWarning: false,
-  ...themeFigmaDark,
-};
+const _nutThemeDark = JSON.parse(JSON.stringify(nutTheme));
+
+_nutThemeDark.token.colorBgLayout = "#000000";
+_nutThemeDark.token.colorText = "rgba(255, 255, 255, 0.92)";
+_nutThemeDark.components.Button.colorText = "rgba(255, 255, 255, 0.92)";
+_nutThemeDark.token.colorTextSecondary = "rgba(255, 255, 255, 0.7)";
+_nutThemeDark.components.Nut.boxBgDefault = "rgba(255, 255, 255, 0.12)";
+
+export const nutThemeDark = _nutThemeDark;

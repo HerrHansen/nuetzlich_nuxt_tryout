@@ -1,7 +1,7 @@
 "use client";
 
 import UiBox from "@/components/ui/UiBox";
-import { Typography } from "antd";
+import { Typography, Button } from "antd";
 
 export default function Home() {
   return (
@@ -17,6 +17,11 @@ export default function Home() {
       <UiBox className="mb">Box Children</UiBox>
 
       <UiBox type={"primary"}>Box Children</UiBox>
+
+      <div>
+        <Button type="primary">Button</Button>
+        <Button type="text">Button Text</Button>
+      </div>
     </main>
   );
 }

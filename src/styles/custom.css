@@ -40,6 +40,6 @@ h6 {
   font-size: var(--ant-font-size-heading-5);
 }
 
-.body {
-  color: var(--ant-color-text);
+.nut-text-copy {
+  color: var(--ant-color-text-secondary);
 }

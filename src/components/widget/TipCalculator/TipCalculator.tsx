@@ -126,7 +126,7 @@ export default function TipCalculator() {
     if (rounded === Rounded.up) _result = result.roundedUp;
 
     return (
-      <UiBox type="primary" className="mb-md">
+      <UiBox type="primary" className="mb-md" style={{ color: "white" }}>
         <h1 className="nut-heading-3 mb-xs">Endbetrag</h1>
         <Row>
           <Col span={12}>
@@ -159,7 +159,7 @@ export default function TipCalculator() {
         />
       </UiBox>
 
-      <div className="mb-xl">
+      <div className="mb-xl nut-text-copy">
         In Deutschland ist es üblich, für guten Service 10 Prozent des
         Rechnungsbetrags als Trinkgeld zu geben, allerdings ist es freiwillig
         und nicht gesetzlich vorgeschrieben.
@@ -209,9 +209,9 @@ export default function TipCalculator() {
             onChange={handleRoundedChange}
             size="large"
           >
-            <Radio.Button value={Rounded.down}>abrunden</Radio.Button>
+            <Radio.Button value={Rounded.down}>ab</Radio.Button>
             <Radio.Button value={Rounded.exact}>keine</Radio.Button>
-            <Radio.Button value={Rounded.up}>aufrunden</Radio.Button>
+            <Radio.Button value={Rounded.up}>auf</Radio.Button>
           </Radio.Group>
         </UiBox>
 

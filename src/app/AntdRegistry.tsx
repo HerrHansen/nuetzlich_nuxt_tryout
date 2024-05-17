@@ -3,7 +3,7 @@
 import React from "react";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import de from "antd/locale/de_DE";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, theme } from "antd";
 import { useServerInsertedHTML } from "next/navigation";
 import { StyleProvider, createCache, extractStyle } from "@ant-design/cssinjs";
 import type Entity from "@ant-design/cssinjs/es/Cache";
@@ -30,9 +30,9 @@ const Registry = ({ children }: StyledRegistryProps) => {
         locale={de}
         theme={{
           ...(isDarkMode ? nutThemeDark : nutTheme),
+          algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
         }}
       >
-        <div>{isDarkMode}</div>
         {children}
       </ConfigProvider>
     </AntdRegistry>

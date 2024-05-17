@@ -9,11 +9,11 @@ import { nutTheme } from "./theme";
 import UiHeader from "@/components/ui/UiHeader";
 import UiFooter from "@/components/ui/UiFooter";
 
-import AntdRegistry from "./AntdRegistry";
+import AntdRegistry from "@/app/AntdRegistry";
 
 const RootLayout = ({ children }: React.PropsWithChildren) => (
   <html lang="de">
-    <body className="dark">
+    <body className="">
       <AntdRegistry>
         <Layout style={{ minHeight: "100svh" }}>
           <Layout.Header className="pb-lg">
