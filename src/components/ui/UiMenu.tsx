@@ -2,7 +2,7 @@
 
 import { Divider } from "antd";
 import { Button } from "antd/lib";
-import { useState } from "react";
+import { useUiStore } from "@/stores/uiStore";
 
 enum UrlKeys {
   rechner = "rechner",
@@ -22,29 +22,45 @@ const items: any[] = [
     label: "Dreisatz Rechner",
     href: `/${UrlKeys.rechner}/${UrlKeys.dreisatzrechner}`,
   },
-  {
-    type: "divider",
-  },
-  {
-    key: "darkMode",
-    label: "Dark Mode",
-  },
 ];
 
 export default function UiMenu() {
+  const { isDarkMode, toggleDarkMode } = useUiStore((state) => ({
+    isDarkMode: state.isDarkMode,
+    toggleDarkMode: state.toggleDarkMode,
+  }));
+
   return (
-    <>
+    <div>
       {items.map((item: any) => (
         <div key={item.key}>
-          {item.type === "divider" ? (
-            <Divider />
-          ) : (
-            <Button key={item.key} block className="text-left" type={"text"} href={item.href}>
+          {
+            <Button block className="text-left" type={"text"} href={item.href}>
               {item.label}
             </Button>
-          )}
+          }
         </div>
       ))}
-    </>
+      <Divider style={{ marginTop: 0, marginBottom: 0 }} />
+      {isDarkMode ? (
+        <Button
+          block
+          className="text-left"
+          type={"text"}
+          onClick={toggleDarkMode}
+        >
+          Light Mode
+        </Button>
+      ) : (
+        <Button
+          block
+          className="text-left"
+          type={"text"}
+          onClick={toggleDarkMode}
+        >
+          Dark Mode
+        </Button>
+      )}
+    </div>
   );
 }

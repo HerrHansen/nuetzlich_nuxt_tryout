@@ -1,7 +1,7 @@
 "use client";
 
 import UiBox from "@/components/ui/UiBox";
-import { Typography } from "antd/lib";
+import { Typography } from "antd";
 
 export default function Home() {
   return (

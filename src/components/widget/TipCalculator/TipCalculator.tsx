@@ -2,9 +2,7 @@
 
 import { ChangeEvent, useEffect, useState } from "react";
 import utils from "@/utils";
-import { Input, Radio } from "antd";
-import { Select } from "antd/lib";
-import { Col, RadioChangeEvent, Row } from "antd/lib";
+import { Input, Radio, Select, Col, RadioChangeEvent, Row } from "antd";
 
 import UiBox from "../../ui/UiBox";
 
@@ -128,11 +126,7 @@ export default function TipCalculator() {
     if (rounded === Rounded.up) _result = result.roundedUp;
 
     return (
-      <UiBox
-        type="primary"
-        className="mb-md"
-        style={{ color: "var(--ant-color-text-light-solid)" }}
-      >
+      <UiBox type="primary" className="mb-md">
         <h1 className="nut-heading-3 mb-xs">Endbetrag</h1>
         <Row>
           <Col span={12}>
@@ -157,7 +151,12 @@ export default function TipCalculator() {
     <div>
       <UiBox className="mb-md">
         <h2 className="nut-heading-4 mb-xs">Land</h2>
-        <Select style={{ width: "100%" }} size="large" options={countries} />
+        <Select
+          className="w-full"
+          size="large"
+          options={countries}
+          defaultValue={countries[0]}
+        />
       </UiBox>
 
       <div className="mb-xl">

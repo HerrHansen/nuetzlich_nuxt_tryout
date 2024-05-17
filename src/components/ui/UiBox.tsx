@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import { nutTheme } from "@/app/theme";
+import { nutTheme, nutThemeDark } from "@/app/theme";
+import { useUiStore } from "@/stores/uiStore";
 
 export default function UiBox({
   children,
@@ -12,6 +13,8 @@ export default function UiBox({
   type?: "default" | "primary";
   style?: any;
 }) {
+  const isDarkMode = useUiStore((state) => state.isDarkMode);
+
   return (
     <div
       className={className + " p-md"}
@@ -20,7 +23,11 @@ export default function UiBox({
         padding: nutTheme.components.Nut.boxPadding,
         background:
           type === "primary"
-            ? nutTheme.components.Nut.boxBgPrimary
+            ? isDarkMode
+              ? nutThemeDark.components.Nut.boxBgPrimary
+              : nutTheme.components.Nut.boxBgPrimary
+            : isDarkMode
+            ? nutThemeDark.components.Nut.boxBgDefault
             : nutTheme.components.Nut.boxBgDefault,
         ...style,
       }}

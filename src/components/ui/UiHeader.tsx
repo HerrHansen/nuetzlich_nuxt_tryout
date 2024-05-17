@@ -24,7 +24,7 @@ export default function UiHeader() {
             border: "4px solid #000",
           }}
         ></div>
-        <h1 className="inline-block">nuetzli.ch</h1>
+        <h1 className="inline-block nut-heading-2">nuetzli.ch</h1>
       </div>
       <div className="flex-align-items-center">
         <Popover

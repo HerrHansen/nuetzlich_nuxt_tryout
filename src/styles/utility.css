@@ -69,6 +69,28 @@ paddingXXS
   padding-right: var(--ant-padding-xxs);
 }
 
+.pb {
+  padding-bottom: var(--ant-padding);
+}
+.pb-lg {
+  padding-bottom: var(--ant-padding-lg);
+}
+.pb-md {
+  padding-bottom: var(--ant-padding-md);
+}
+.pb-sm {
+  padding-bottom: var(--ant-padding-sm);
+}
+.pb-xl {
+  padding-bottom: var(--ant-padding-xl);
+}
+.pb-xs {
+  padding-bottom: var(--ant-padding-xs);
+}
+.pb-xxs {
+  padding-bottom: var(--ant-padding-xxs);
+}
+
 /* Margin */
 .m {
   margin: var(--ant-margin);
